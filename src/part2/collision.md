@@ -118,7 +118,7 @@ Armed with this knowledge, let's work through the paddle bounce code:
 The Y position's check is simple, since our paddle is flat.
 However, the X position has two checks which widen the area the ball can bounce on.
 First we subtract 8 from the paddle's position; if the ball is more than 8 pixels to the left of the paddle, it shouldn't bounce.
-Then we undo this by adding 16, and while we're at it, add another 8 pixels; if the ball is more than 16 pixels to the right of the paddle, it shouldn't bounce.
+Then we undo this by adding 8, and while we're at it, add another 16 pixels; if the ball is more than 16 pixels to the right of the paddle, it shouldn't bounce.
 
 ::: tip Paddle width
 
