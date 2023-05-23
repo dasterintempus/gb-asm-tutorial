@@ -117,8 +117,19 @@ Armed with this knowledge, let's work through the paddle bounce code:
 
 The Y position's check is simple, since our paddle is flat.
 However, the X position has two checks which widen the area the ball can bounce on.
-First we add 16 to the ball's position; if the ball is more than 16 pixels to the right of the paddle, it shouldn't bounce.
-Then we undo this by subtracting 16, and while we're at it, subtract another 8 pixels; if the ball is more than 8 pixels to the left of the paddle, it shouldn't bounce.
+First we subtract 8 from the paddle's position; if the ball is more than 8 pixels to the left of the paddle, it shouldn't bounce.
+Then we undo this by adding 16, and while we're at it, add another 8 pixels; if the ball is more than 16 pixels to the right of the paddle, it shouldn't bounce.
+
+::: tip Paddle width
+
+You might be wondering why we checked 16 pixels to the right but only 8 pixels to the left.
+Remember that OAM positions represent the upper-*left* corner of a sprite, so the center of our paddle is actually 4 pixels to the right of the position in OAM.
+When you consider this, we're actually checking 12 pixels out on either side from the center of the paddle.
+
+12 pixels might seem like a lot, but it gives some tolerance to the player in case their positioning is off.
+If you'd prefer to make this easier or more difficult, feel free to adjust the values!
+
+:::
 
 <svg viewBox="-10 -10 860 520">
 	<style>
@@ -209,16 +220,6 @@ Then we undo this by subtracting 16, and while we're at it, subtract another 8 p
 	<text x="432" y="470">+ 8 + 16</text>
 </svg>
 
-::: tip Paddle width
-
-You might be wondering why we checked 16 pixels to the right but only 8 pixels to the left.
-Remember that OAM positions represent the upper-*left* corner of a sprite, so the center of our paddle is actually 4 pixels to the right of the position in OAM.
-When you consider this, we're actually checking 12 pixels out on either side from the center of the paddle.
-
-12 pixels might seem like a lot, but it gives some tolerance to the player in case their positioning is off.
-If you'd prefer to make this easier or more difficult, feel free to adjust the values!
-
-:::
 
 ## BONUS: tweaking the bounce height
 
